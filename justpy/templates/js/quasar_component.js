@@ -112,7 +112,9 @@ Vue.component('quasar_component', {
                 case 'cancel':
                     fn = this.cancelEvent;
                     break;
-
+                case 'filter':
+                    fn = this.filterEvent;
+                    break;
                 default:
                     fn = this.defaultEvent;
             }
@@ -175,6 +177,9 @@ Vue.component('quasar_component', {
             }
             if (event == null && this.$props.jp_props.html_tag == 'q-input') event = '';
             this.eventFunction(event, 'input', aux);
+        }),
+        filterEvent: (function (event) {
+            this.eventFunction(event, 'filter');
         }),
         changeEvent: (function (event) {
             this.eventFunction(event, 'change');
